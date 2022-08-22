@@ -7,8 +7,12 @@ router.get('/' , (req , res)=>{
     // router code here
 })
 
-
-router.post('/autores' , (req , res)=>{
+router.get('/autores',async (req,res) => {
+   const datos =  await fn.mostrarAutor()
+   console.log(datos);
+   res.json(datos)
+})
+router.post('/autores' , async (req , res)=>{
     const datos =req.body;
     const nombre = datos.nombre;
     const apellido = datos.apellido;
@@ -24,6 +28,7 @@ router.post('/libros' , (req , res)=>{
     const titulo = datos.titulo;
     const descripcion = datos.descripcion;
     console.log( titulo, descripcion);
+    
 })
 
 module.exports  = router

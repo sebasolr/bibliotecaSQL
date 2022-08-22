@@ -47,7 +47,7 @@
                     <li class="list-group-item">A third item</li>
                   </ul>      -->
                   <table class="table border border-info">
-                    <thead>
+                    <thead class="autores">
                       <tr>
                         <th scope="col">Id</th>
                         <th scope="col">Nombre</th>
@@ -62,18 +62,30 @@
                         <td>apellido</td>
                         <td><button class=" btn btn-info">view</button></td>
                       </tr>
-                                    <tr>
-                        <th scope="row">1</th>
-                        <td>nombre</td>
-                        <td>apellido</td>
-                        <td><button class=" btn btn-info">view</button></td>
-                      </tr>
-      
                     </tbody>
                   </table>
             </div>
         </div>
     </div>
       <script src="js/bootstrap.min.css"></script>
+      <script>
+      const getAutores = async () => {
+        const  response  = await fetch("http://localhost:3000/api/autores");
+        let data = response.json()
+        $(".autores").html("");
+    
+        $.Each(data, (i) => {
+          $(".autores").append(`
+          <tr>
+          <th scope="col">${i[0]} </th>
+          <th scope="col">${i.nombre} </th>
+          <th scope="col">${i[2]} </th>
+          <th scope="col">${i[3]} </th>
+        </tr>
+       `);
+        });
+      };
+      getAutores()
+      </script>
 </body>
 </html>
