@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autores</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar bg-dark text-center">
+			<form class="container-fluid justify-content-start">
+				<button  class="btn btn-outline-success me-2" type="button"><a href="http://localhost:3000/" style="text-decoration:none;">Autores</a> </button>
+				<button class="btn btn-sm btn-outline-secondary" type="button"><a href="http://localhost:3000/libros.html" style="text-decoration:none;">Libros</a></button>
+			</form>
+		</nav>
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-6">
+              <form action="/api/autores" method="post">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">First Name</label>
+                    <input type="text" name="nombre" class="form-control" id="exampleFormControlInput1" placeholder="Agrega un nombre">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Last Name</label>
+                  <input type="text" name="apellido" class="form-control" id="exampleFormControlInput1" placeholder="Agrega un apellido">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlTextarea1" class="form-label">Note</label>
+                  <textarea class="form-control" name="note" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <div class="col-12 text-center mt-4">
+                    <button type="submit" class="btn btn-outline-success ">Success</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-6">
+                <!-- <ul class="list-group list-group-horizontal ">
+                    <li class="list-group-item list-group-item-primary fw-bold">An item</li>
+                    <li class="list-group-item list-group-item-primary fw-bold">A second item</li>
+                    <li class="list-group-item list-group-item-primary fw-bold">A third item</li>
+                  </ul>
+                  <ul class="list-group list-group-horizontal-sm">
+                    <li class="list-group-item">An item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                  </ul>      -->
+                  <table class="table border border-info">
+                    <thead>
+                      <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>nombre</td>
+                        <td>apellido</td>
+                        <td><button class=" btn btn-info">view</button></td>
+                      </tr>
+                                    <tr>
+                        <th scope="row">1</th>
+                        <td>nombre</td>
+                        <td>apellido</td>
+                        <td><button class=" btn btn-info">view</button></td>
+                      </tr>
+      
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+      <script src="js/bootstrap.min.css"></script>
+</body>
+</html>
