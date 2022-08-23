@@ -5,20 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autores</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 <body>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <nav class="navbar bg-dark text-center">
 			<form class="container-fluid justify-content-start">
-				<button  class="btn btn-outline-success me-2" type="button"><a href="http://localhost:3000/" style="text-decoration:none;">Autores</a> </button>
-				<button class="btn btn-sm btn-outline-secondary" type="button"><a href="http://localhost:3000/libros.html" style="text-decoration:none;">Libros</a></button>
+				<button  class="btn btn-outline-success me-2" type="button"><a href="http://localhost:3000/autores" style="text-decoration:none;">Autores</a> </button>
+				<button class="btn btn-sm btn-outline-secondary" type="button"><a href="http://localhost:3000/libros" style="text-decoration:none;">Libros</a></button>
 			</form>
 		</nav>
     <div class="container">
         <div class="row mt-4">
             <div class="col-6">
-              <form action="/api/autores" method="post">
+              <h3 class="text-center text-danger"> Agregar Autores</h3>
+              <form action="/autores" method="post">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">First Name</label>
                     <input type="text" name="nombre" class="form-control" id="exampleFormControlInput1" placeholder="Agrega un nombre">
@@ -37,54 +38,33 @@
               </form>
             </div>
             <div class="col-6">
-                <!-- <ul class="list-group list-group-horizontal ">
-                    <li class="list-group-item list-group-item-primary fw-bold">An item</li>
-                    <li class="list-group-item list-group-item-primary fw-bold">A second item</li>
-                    <li class="list-group-item list-group-item-primary fw-bold">A third item</li>
-                  </ul>
-                  <ul class="list-group list-group-horizontal-sm">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
-                  </ul>      -->
-                  <table class="table border border-info">
+              <h3 class="text-center text-success mb-4"> Lista de Autores</h3>
+                 <table class="table border border-info">
                     <thead >
                       <tr>
                         <th scope="col">Id</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
-                        <th scope="col">Acciones</th>
+                        <th scope="col">link</th>
                       </tr>
                     </thead>
                     <tbody class="autores">
-                      
+                      {% for autor in autores %}
+                      <tr>
+                        <td class="col-3">{{ autor.id }}</td>
+                        <td class="col-3">{{ autor.nombre }}</td>
+                        <td class="col-3">{{ autor.apellido }}</td>
+                        <td class="col-3"><button onclick="alert('{{ autor.nota }}')"> view</button></td>
+                      </tr>
+                      {% endfor %}
                     </tbody>
                   </table>
+                  
             </div>
         </div>
     </div>
-      <script src="js/bootstrap.min.css"></script>
-      <script src="js/axios.min.js"></script>
-      <script>
-        const autores = document.querySelector(".autores");
-        const tr = document.createElement('tr');
-             
-     async function getAutores () {
-        const data  = await fetch("http://localhost:3000/api/autores");
-         let datos =  await data.json();
-          datos.forEach((i) => {
-            $(".autores").append(`
-              <tr>
-              <th scope="col">${i[0]} </th>
-              <th scope="col">${i[1]} </th>
-              <th scope="col">${i[2]} </th>
-              <th scope="col">${i[3]} </th>
-              </tr>`
-          );
-          });
-
-      };
-      getAutores()
-      </script>
+      <script src="./js/bootstrap.min.css"></script>
+      <script src="./js/axios.min.js"></script>
+      
 </body>
 </html>
