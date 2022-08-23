@@ -12,11 +12,16 @@ async function agregarAutor(nombre,apellido,nota){
 }
 async function mostrarAutor(){
     const client = await pool.connect()
-    const libros = await client.query('select * from autores')
-    let libros_datos = libros.rows
-    libros_datos = libros_datos.map(data => Object.values(data));
+    let datos;
+    datos  = await client.query({
+        text: "SELECT * from autores",
+        rowMode: 'array'
+    })
+
+    /* let libros_datos = libros.rows
+    libros_datos = libros_datos.map(data => Object.values(data)); */
     client.release()
-    return libros_datos
+    return datos.rows
 }
 
 async function agregarLibro(){

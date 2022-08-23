@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <nav class="navbar bg-dark text-center">
 			<form class="container-fluid justify-content-start">
 				<button  class="btn btn-outline-success me-2" type="button"><a href="http://localhost:3000/" style="text-decoration:none;">Autores</a> </button>
@@ -47,7 +48,7 @@
                     <li class="list-group-item">A third item</li>
                   </ul>      -->
                   <table class="table border border-info">
-                    <thead class="autores">
+                    <thead >
                       <tr>
                         <th scope="col">Id</th>
                         <th scope="col">Nombre</th>
@@ -55,35 +56,33 @@
                         <th scope="col">Acciones</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>nombre</td>
-                        <td>apellido</td>
-                        <td><button class=" btn btn-info">view</button></td>
-                      </tr>
+                    <tbody class="autores">
+                      
                     </tbody>
                   </table>
             </div>
         </div>
     </div>
       <script src="js/bootstrap.min.css"></script>
+      <script src="js/axios.min.js"></script>
       <script>
-      const getAutores = async () => {
-        const  response  = await fetch("http://localhost:3000/api/autores");
-        let data = response.json()
-        $(".autores").html("");
-    
-        $.Each(data, (i) => {
-          $(".autores").append(`
-          <tr>
-          <th scope="col">${i[0]} </th>
-          <th scope="col">${i.nombre} </th>
-          <th scope="col">${i[2]} </th>
-          <th scope="col">${i[3]} </th>
-        </tr>
-       `);
-        });
+        const autores = document.querySelector(".autores");
+        const tr = document.createElement('tr');
+             
+     async function getAutores () {
+        const data  = await fetch("http://localhost:3000/api/autores");
+         let datos =  await data.json();
+          datos.forEach((i) => {
+            $(".autores").append(`
+              <tr>
+              <th scope="col">${i[0]} </th>
+              <th scope="col">${i[1]} </th>
+              <th scope="col">${i[2]} </th>
+              <th scope="col">${i[3]} </th>
+              </tr>`
+          );
+          });
+
       };
       getAutores()
       </script>
