@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>descripcion libro</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar bg-dark text-center">
+        <form class="container-fluid justify-content-start">
+            <button  class="btn btn-outline-success me-2" type="button"><a href="http://localhost:3000/autores" style="text-decoration:none;">Autores</a> </button>
+            <button class="btn btn-sm btn-outline-secondary" type="button"><a href="http://localhost:3000/libros" style="text-decoration:none;">Libros</a></button>
+        </form>
+    </nav>
+    <div class="card">
+        <div class="card-header text-center ">
+          {{ libros.titulo }}
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p class="text-center"> {{ libros.descripcion }} </p>
+            <footer class="blockquote-footer text-center">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+          </blockquote>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <form action="/libros/{{libros.id}}" class="mt-2" method="post">
+                  <div>
+                  <select class="form-select" aria-label="Default select example" name="id_autor">
+                    <option selected>Agrega a un autor</option>
+                    {% for autor in autores %}
+                    <option name="holi" value="{{ autor.id }}">{{ autor.nombre}} {{ autor.apellido }}</option>
+                    {% endfor %}
+                  </select>
+                  </div>
+                  <input type="submit" value="Enviar">
+                </form>
+            </div>
+            <div class="col-6 mt-2">
+                <table class="table table-sm table-dark">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">apellido</th>
+                        <th scope="col">titulo</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for uni in union %}
+                      <tr>
+                        <th scope="row">{{ uni.nombre }}</th>
+                        <td>{{ uni.apellido }}</td>
+                        <td>{{ uni.titulo }}</td>
+                     </tr>
+                     {% endfor %}
+                     
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+      </div>
+</body>
+</html>

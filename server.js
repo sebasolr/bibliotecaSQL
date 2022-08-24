@@ -21,7 +21,7 @@ nunjucks.configure(path.resolve(__dirname,"templates"),{
 app.use("/static", express.static("static"));
 app.use(express.static('node_modules/bootstrap/dist'))
 app.use(express.static('node_modules/axios/dist'))
-const fn = require('./funciones/crud')
+
 // poner una ruta antes del router nos agrega el www.holi.com/api/router
 app.use(router)
 

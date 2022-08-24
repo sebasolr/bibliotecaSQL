@@ -47,7 +47,7 @@
                       <tr>
                         <td class="col-3">{{ libro.id }}</td>
                         <td class="col-3">{{ libro.titulo }}</td>
-                        <td class="col-3"><button onclick="alert('{{ libro.descripcion }}')"> view</button></td>
+                        <td class="col-3"> <a href="http://localhost:3000/libros/{{ libro.id }}">view</a></td>
                       </tr>
                       {% endfor %}
                     </tbody>

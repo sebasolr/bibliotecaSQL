@@ -17,3 +17,7 @@ create table autor_libro(
     primary key (libro_id, autor_id) 
 )
     -- foreign key (autor_id) references autores(id)
+
+select autores.nombre, autores.apellido, lib.titulo 
+from autores join autor_libro as aut on autores.id=aut.autor_id
+join libros as lib on lib.id=aut.libro_id;
