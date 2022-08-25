@@ -69,6 +69,15 @@ async function unirtablas (id_libro){
     client.release()
     return unir.rows
 }
-module.exports = {agregarLibro,mostrarLibro,agregarAutor,mostrarAutor,libro,autorlibro, unirtablas}
+async function mostrarallAutores(id){
+    const client = await pool.connect()
+    const libros = await client.query({
+        text: 'select autores.nombre, autores.apellido, lib.titulo from autores join autor_libro as aut on autores.id=aut.autor_id join libros as lib on lib.id=aut.libro_id where autores.id = $1;',
+        values:[id]
+    })
+    client.release()
+    return libros.rows
+}
+module.exports = {agregarLibro,mostrarLibro,agregarAutor,mostrarAutor,libro,autorlibro, unirtablas,mostrarallAutores}
 
 

@@ -8,6 +8,23 @@ router.get('/autores', async(req,res)=>{
     res.render('autores.html',datos)
     
 })
+router.post('/autores', async (req,res)=>{
+    const datos =req.body;
+    const nombre = datos.nombre;
+    const apellido = datos.apellido;
+    const note = datos.note;
+    await fn.agregarAutor(nombre,apellido,note)
+    res.redirect('/autores')
+})
+router.get('/autores/:id', async(req,res)=>{
+    const id = req.params.id
+    let libros =await fn.mostrarallAutores(id)
+    res.render('infoautor.html',{libros:libros})
+    
+})
+router.get('/prestamo',(req,res)=>{
+    res.render('prestamos.html')
+})
 //traer info del front
 router.post('/libros/:id',async (req,res)=>{
 const id_libro = req.params.id;
@@ -33,14 +50,6 @@ router.get('/libros/:id', async(req,res)=>{
 })
 
 
-router.post('/autores', async (req,res)=>{
-    const datos =req.body;
-    const nombre = datos.nombre;
-    const apellido = datos.apellido;
-    const note = datos.note;
-    await fn.agregarAutor(nombre,apellido,note)
-    res.redirect('/autores')
-})
 
 router.get('/libros',async (req,res)=>{
     const ayuda =  await fn.mostrarLibro()

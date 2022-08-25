@@ -20,4 +20,14 @@ create table autor_libro(
 
 select autores.nombre, autores.apellido, lib.titulo 
 from autores join autor_libro as aut on autores.id=aut.autor_id
-join libros as lib on lib.id=aut.libro_id;
+join libros as lib on lib.id=aut.libro_id 
+where lib.id = $1;
+
+select autores.nombre, autores.apellido, lib.titulo 
+from autores join autor_libro as aut on autores.id=aut.autor_id
+join libros as lib on lib.id=aut.libro_id 
+where autores.id= $1;
+
+delete from autor_libro;
+delete from libros;
+delete from autores;

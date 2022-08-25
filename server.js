@@ -18,7 +18,7 @@ nunjucks.configure(path.resolve(__dirname,"templates"),{
     watch:true
 });
 
-app.use("/static", express.static("static"));
+app.use("/", express.static("public"));
 app.use(express.static('node_modules/bootstrap/dist'))
 app.use(express.static('node_modules/axios/dist'))
 

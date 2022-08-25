@@ -13,7 +13,8 @@
 			<form class="container-fluid justify-content-start">
 				<button  class="btn btn-outline-success me-2" type="button"><a href="http://localhost:3000/autores" style="text-decoration:none;">Autores</a> </button>
 				<button class="btn btn-sm btn-outline-secondary" type="button"><a href="http://localhost:3000/libros" style="text-decoration:none;">Libros</a></button>
-			</form>
+        <button class="btn btn-sm btn-outline-secondary" type="button"><a href="http://localhost:3000/prestamo" style="text-decoration:none;">Prestamo</a></button>
+      </form>
 		</nav>
     <div class="container">
         <div class="row mt-4">
@@ -54,7 +55,7 @@
                         <td class="col-3">{{ autor.id }}</td>
                         <td class="col-3">{{ autor.nombre }}</td>
                         <td class="col-3">{{ autor.apellido }}</td>
-                        <td class="col-3"><button onclick="alert('{{ autor.nota }}')"> view</button></td>
+                        <td class="col-3"><a href="http://localhost:3000/autores/{{autor.id}}">link</a></td>
                       </tr>
                       {% endfor %}
                     </tbody>
